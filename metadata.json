@@ -1,0 +1,8 @@
+{
+  "name": "Furniro - Modern Living & Furniture Store",
+  "description": "Discover our curated collection of handcrafted, stylish modern furniture for your home. High-end Scandinavian living, dining, and bedroom pieces.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
