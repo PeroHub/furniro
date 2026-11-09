@@ -61,15 +61,14 @@ export default function InspirationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Text Column */}
-          <div className="lg:col-span-5 pr-0 lg:pr-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#333333] leading-[1.2] font-['Montserrat',sans-serif] mb-3">
+          <div className="lg:col-span-5 pr-0 lg:pr-6 font-['Poppins',sans-serif]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#3A3A3A] leading-[1.2] font-['Poppins',sans-serif] mb-3">
               50+ Beautiful rooms
               <br />
               inspiration
             </h2>
             <p className="text-sm sm:text-base text-[#666666] leading-relaxed mb-8 max-w-md">
-              Our designer already made a lot of beautiful prototipe of rooms that inspire you. 
-              Discover balanced spaces crafted for rest, reflection, and gathering.
+              Our designer already made a lot of beautiful prototipe of rooms that inspire you.
             </p>
             <button
               onClick={() => {
@@ -82,9 +81,9 @@ export default function InspirationSection() {
           </div>
 
           {/* Right Carousel Slider */}
-          <div className="lg:col-span-7 flex flex-col sm:flex-row gap-6 items-center relative">
+          <div className="lg:col-span-7 flex flex-col sm:flex-row gap-6 items-center relative w-full">
             {/* Primary active slide */}
-            <div className="relative w-full sm:w-[380px] lg:w-[400px] h-[480px] sm:h-[540px] rounded-xs overflow-hidden shadow-lg group">
+            <div className="relative w-full sm:w-[380px] lg:w-[400px] h-[360px] sm:h-[480px] lg:h-[540px] rounded-xs overflow-hidden shadow-lg group">
               <Image
                 src={currentRoom.image}
                 alt={currentRoom.title}
@@ -95,14 +94,14 @@ export default function InspirationSection() {
               />
 
               {/* Floating Room Tag Box (as seen in Figma) */}
-              <div className="absolute bottom-6 left-6 z-10 flex items-end">
-                <div className="bg-white/90 backdrop-blur-md p-5 sm:p-6 shadow-md border border-neutral-100">
+              <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-6 sm:left-6 z-10 flex items-end">
+                <div className="bg-white/90 backdrop-blur-md p-4 sm:p-6 shadow-md border border-neutral-100 flex-1 sm:flex-initial">
                   <div className="flex items-center gap-2 text-xs text-[#666666] mb-1">
                     <span className="font-medium text-[#333333]">{currentRoom.number}</span>
                     <span className="w-6 h-px bg-[#666666]" />
                     <span>{currentRoom.category}</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#333333] font-['Montserrat',sans-serif]">
+                  <h3 className="text-lg sm:text-2xl font-bold text-[#333333] font-['Poppins',sans-serif]">
                     {currentRoom.title}
                   </h3>
                 </div>
@@ -110,7 +109,7 @@ export default function InspirationSection() {
                 {/* Arrow trigger next to tag */}
                 <button
                   onClick={handleNext}
-                  className="bg-[#B88E2F] hover:bg-[#9E7A26] text-white p-3.5 shadow-md transition-colors cursor-pointer"
+                  className="bg-[#B88E2F] hover:bg-[#9E7A26] text-white p-3 sm:p-3.5 shadow-md transition-colors cursor-pointer shrink-0"
                   aria-label="Next inspiration room"
                 >
                   <ArrowRight className="w-5 h-5" />

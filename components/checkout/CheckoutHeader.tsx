@@ -53,20 +53,20 @@ export default function CheckoutHeader() {
         </div>
 
         {/* Heading: Checkout */}
-        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight text-black font-['Montserrat',sans-serif] mb-2.5">
+        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight text-black font-['Poppins',sans-serif] mb-2.5">
           Checkout
         </h1>
 
         {/* Breadcrumb Navigation: Home > Checkout */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm sm:text-base">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm sm:text-base font-['Poppins',sans-serif]">
           <Link
             href="/"
-            className="font-medium text-black hover:text-[#B88E2F] transition-colors font-['Montserrat',sans-serif]"
+            className="font-medium text-black hover:text-[#B88E2F] transition-colors"
           >
             Home
           </Link>
           <ChevronRight className="w-4 h-4 text-black stroke-[2.5]" />
-          <span className="font-light text-black font-['Montserrat',sans-serif]">
+          <span className="font-light text-black">
             Checkout
           </span>
         </nav>

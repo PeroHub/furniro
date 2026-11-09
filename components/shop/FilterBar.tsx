@@ -39,63 +39,65 @@ export default function FilterBar({
 
   return (
     <div className="w-full bg-[#F9F1E7] border-y border-[#D9D9D9]/50 font-['Poppins',sans-serif]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 flex flex-col md:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-5">
         
         {/* Left Section: Filter Button + View Toggles + Divider + Results Text */}
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-sm text-black">
-          {/* Filter Toggle Button */}
-          <button
-            onClick={() => setIsFilterDrawerOpen(!isFilterDrawerOpen)}
-            className="flex items-center gap-2.5 font-normal text-black hover:text-[#B88E2F] transition-colors cursor-pointer text-base"
-            aria-expanded={isFilterDrawerOpen}
-            aria-label="Toggle filter options"
-          >
-            <SlidersHorizontal className="w-5 h-5 text-black" />
-            <span className="font-['Montserrat',sans-serif] text-base">Filter</span>
-          </button>
+        <div className="flex flex-wrap items-center justify-between sm:justify-start gap-3 sm:gap-6 text-sm text-black w-full md:w-auto">
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Filter Toggle Button */}
+            <button
+              onClick={() => setIsFilterDrawerOpen(!isFilterDrawerOpen)}
+              className="flex items-center gap-2 font-normal text-black hover:text-[#B88E2F] transition-colors cursor-pointer text-sm sm:text-base"
+              aria-expanded={isFilterDrawerOpen}
+              aria-label="Toggle filter options"
+            >
+              <SlidersHorizontal className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+              <span className="font-['Poppins',sans-serif]">Filter</span>
+            </button>
 
-          {/* Grid View Toggle Icon */}
-          <button
-            onClick={() => onViewModeChange?.('grid')}
-            className={`p-1.5 rounded transition-colors cursor-pointer ${
-              viewMode === 'grid'
-                ? 'text-black bg-white/70 shadow-2xs'
-                : 'text-neutral-500 hover:text-black'
-            }`}
-            title="Grid view"
-            aria-label="Switch to grid view"
-          >
-            <LayoutGrid className="w-5 h-5" />
-          </button>
+            {/* Grid View Toggle Icon */}
+            <button
+              onClick={() => onViewModeChange?.('grid')}
+              className={`p-1.5 rounded transition-colors cursor-pointer ${
+                viewMode === 'grid'
+                  ? 'text-black bg-white/70 shadow-2xs'
+                  : 'text-neutral-500 hover:text-black'
+              }`}
+              title="Grid view"
+              aria-label="Switch to grid view"
+            >
+              <LayoutGrid className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
 
-          {/* List View Toggle Icon */}
-          <button
-            onClick={() => onViewModeChange?.('list')}
-            className={`p-1.5 rounded transition-colors cursor-pointer ${
-              viewMode === 'list'
-                ? 'text-black bg-white/70 shadow-2xs'
-                : 'text-neutral-500 hover:text-black'
-            }`}
-            title="List view"
-            aria-label="Switch to list view"
-          >
-            <Rows3 className="w-5 h-5" />
-          </button>
+            {/* List View Toggle Icon */}
+            <button
+              onClick={() => onViewModeChange?.('list')}
+              className={`p-1.5 rounded transition-colors cursor-pointer ${
+                viewMode === 'list'
+                  ? 'text-black bg-white/70 shadow-2xs'
+                  : 'text-neutral-500 hover:text-black'
+              }`}
+              title="List view"
+              aria-label="Switch to list view"
+            >
+              <Rows3 className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+          </div>
 
           {/* Vertical Divider Line */}
-          <span className="h-8 w-[2px] bg-[#9F9F9F]/80 hidden sm:inline-block" aria-hidden="true" />
+          <span className="h-6 sm:h-8 w-[1px] sm:w-[2px] bg-[#9F9F9F]/80 hidden sm:inline-block" aria-hidden="true" />
 
           {/* Results Text Label */}
-          <span className="text-sm sm:text-base text-black font-normal font-['Poppins',sans-serif]">
+          <span className="text-xs sm:text-sm lg:text-base text-black font-normal font-['Poppins',sans-serif]">
             Showing {startIdx}–{endIdx} of {totalResults} results
           </span>
         </div>
 
         {/* Right Section: "Show" count input + "Short by" dropdown */}
-        <div className="flex items-center gap-4 sm:gap-6 text-sm sm:text-base text-black">
+        <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-6 text-xs sm:text-sm lg:text-base text-black w-full md:w-auto">
           {/* Show count input box */}
-          <div className="flex items-center gap-3">
-            <span className="font-normal font-['Montserrat',sans-serif] text-black">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="font-normal font-['Poppins',sans-serif] text-black">
               Show
             </span>
             <div className="relative">
@@ -109,20 +111,20 @@ export default function FilterBar({
                   const val = parseInt(e.target.value, 10);
                   if (val > 0) onItemsPerPageChange?.(val);
                 }}
-                className="w-14 h-12 bg-white text-neutral-500 text-center font-normal rounded-xs border-none shadow-2xs focus:ring-1 focus:ring-[#B88E2F] focus:outline-hidden"
+                className="w-12 sm:w-14 h-10 sm:h-12 bg-white text-neutral-600 text-center font-normal rounded-xs border-none shadow-2xs focus:ring-1 focus:ring-[#B88E2F] focus:outline-hidden text-sm"
               />
             </div>
           </div>
 
           {/* Short by (Sort by) dropdown select input */}
-          <div className="flex items-center gap-3">
-            <span className="font-normal font-['Montserrat',sans-serif] text-black whitespace-nowrap">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="font-normal font-['Poppins',sans-serif] text-black whitespace-nowrap">
               Short by
             </span>
             <select
               value={sortBy}
               onChange={(e) => onSortChange?.(e.target.value)}
-              className="h-12 bg-white text-neutral-500 px-4 pr-8 rounded-xs border-none shadow-2xs text-sm sm:text-base font-normal focus:ring-1 focus:ring-[#B88E2F] focus:outline-hidden cursor-pointer"
+              className="h-10 sm:h-12 bg-white text-neutral-600 px-3 sm:px-4 pr-7 sm:pr-8 rounded-xs border-none shadow-2xs text-xs sm:text-sm font-normal focus:ring-1 focus:ring-[#B88E2F] focus:outline-hidden cursor-pointer"
             >
               <option value="default">Default</option>
               <option value="price-asc">Price: Low to High</option>

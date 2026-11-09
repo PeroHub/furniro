@@ -14,7 +14,7 @@ export default function ComparisonPage() {
   const [product1] = useState<ComparisonProductInfo>({
     id: 'asgaard-sofa',
     name: 'Asgaard Sofa',
-    price: 'Rs. 250,000.00',
+    price: '₦ 250,000.00',
     rawPrice: 250000,
     rating: 4.7,
     reviewsCount: 204,

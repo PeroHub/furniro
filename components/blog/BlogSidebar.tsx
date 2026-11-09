@@ -65,7 +65,7 @@ export default function BlogSidebar({
       {/* 2. Categories Widget */}
       <div className="mt-10 sm:mt-12">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-medium text-black font-['Montserrat',sans-serif]">
+          <h3 className="text-2xl font-medium text-black font-['Poppins',sans-serif]">
             Categories
           </h3>
           {selectedCategory !== 'all' && (
@@ -112,7 +112,7 @@ export default function BlogSidebar({
 
       {/* 3. Recent Posts Widget */}
       <div className="mt-14 sm:mt-16">
-        <h3 className="text-2xl font-medium text-black font-['Montserrat',sans-serif] mb-6">
+        <h3 className="text-2xl font-medium text-black font-['Poppins',sans-serif] mb-6">
           Recent Posts
         </h3>
 

@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ShoppingBag, Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
-import { useStore, formatRupiah } from '@/context/StoreContext';
+import { useStore, formatNaira } from '@/context/StoreContext';
 
 export default function CartDrawer() {
   const {
@@ -93,21 +94,31 @@ export default function CartDrawer() {
                       className="py-4 flex items-center gap-4 group"
                     >
                       {/* Product Thumbnail */}
-                      <div className="relative w-20 h-20 bg-[#F9F1E7] rounded-lg overflow-hidden shrink-0 border border-neutral-100">
+                      <Link
+                        href={`/product/${product.id.replace(/-\d+$/, '')}`}
+                        onClick={closeCart}
+                        className="relative w-20 h-20 bg-[#F9F1E7] rounded-lg overflow-hidden shrink-0 border border-neutral-100 cursor-pointer block"
+                      >
                         <Image
                           src={product.image}
                           alt={product.name}
                           fill
                           sizes="80px"
-                          className="object-cover"
+                          className="object-cover hover:scale-105 transition-transform"
                           referrerPolicy="no-referrer"
                         />
-                      </div>
+                      </Link>
 
                       {/* Product Details */}
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-medium text-[#333333] truncate">
-                          {product.name}
+                          <Link
+                            href={`/product/${product.id.replace(/-\d+$/, '')}`}
+                            onClick={closeCart}
+                            className="hover:text-[#B88E2F] transition-colors"
+                          >
+                            {product.name}
+                          </Link>
                         </h4>
                         <div className="flex items-center gap-2 mt-1 text-xs">
                           <span className="font-medium text-[#333333]">
@@ -115,7 +126,7 @@ export default function CartDrawer() {
                           </span>
                           <span className="text-[#9F9F9F]">X</span>
                           <span className="font-semibold text-[#B88E2F] tabular-nums">
-                            {formatRupiah(product.price)}
+                            {formatNaira(product.price)}
                           </span>
                         </div>
 
@@ -166,7 +177,7 @@ export default function CartDrawer() {
                       Subtotal
                     </span>
                     <span className="text-base font-bold text-[#B88E2F] tabular-nums">
-                      {formatRupiah(cartSubtotal)}
+                      {formatNaira(cartSubtotal)}
                     </span>
                   </div>
 

@@ -21,11 +21,10 @@ interface OrderSummaryAndPaymentProps {
 }
 
 export function formatRs(amount: number): string {
-  return `Rs. ${amount.toLocaleString('en-US', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
+  return `₦ ${amount.toLocaleString('en-US')}`;
 }
+
+export const formatNaira = formatRs;
 
 export default function OrderSummaryAndPayment({
   items,
@@ -33,7 +32,7 @@ export default function OrderSummaryAndPayment({
   total,
   billingData,
 }: OrderSummaryAndPaymentProps) {
-  const { showToast } = useStore();
+  const { showToast, clearCart } = useStore();
   const [selectedPayment, setSelectedPayment] = useState<string>('bank-transfer-1');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -54,6 +53,7 @@ export default function OrderSummaryAndPayment({
       const generatedOrder = `FUR-${Math.floor(100000 + Math.random() * 900000)}`;
       setOrderNumber(generatedOrder);
       setOrderConfirmed(true);
+      clearCart();
       showToast('Order placed successfully!');
     }, 1200);
   };
@@ -64,11 +64,11 @@ export default function OrderSummaryAndPayment({
         {/* 1. Order Summary Table */}
         <div className="space-y-5">
           {/* Header Row */}
-          <div className="flex items-center justify-between pb-3">
-            <h3 className="text-2xl font-medium text-black font-['Montserrat',sans-serif]">
+          <div className="flex items-center justify-between pb-3 font-['Poppins',sans-serif]">
+            <h3 className="text-2xl font-medium text-black">
               Product
             </h3>
-            <h3 className="text-2xl font-medium text-black font-['Montserrat',sans-serif]">
+            <h3 className="text-2xl font-medium text-black">
               Subtotal
             </h3>
           </div>
@@ -97,7 +97,7 @@ export default function OrderSummaryAndPayment({
           {/* Total Row */}
           <div className="flex items-center justify-between text-base py-2">
             <span className="text-black font-normal">Total</span>
-            <span className="text-2xl font-bold text-[#B88E2F] font-['Montserrat',sans-serif] tabular-nums">
+            <span className="text-2xl font-bold text-[#B88E2F] font-['Poppins',sans-serif] tabular-nums">
               {formatRs(total)}
             </span>
           </div>

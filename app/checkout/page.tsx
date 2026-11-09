@@ -6,8 +6,11 @@ import CheckoutHeader from '@/components/checkout/CheckoutHeader';
 import BillingForm, { BillingFormData } from '@/components/checkout/BillingForm';
 import OrderSummaryAndPayment from '@/components/checkout/OrderSummaryAndPayment';
 import FeatureBar from '@/components/shop/FeatureBar';
+import { useStore } from '@/context/StoreContext';
 
 export default function CheckoutPage() {
+  const { cart, cartSubtotal } = useStore();
+
   const [formData, setFormData] = useState<BillingFormData>({
     firstName: '',
     lastName: '',
@@ -29,20 +32,25 @@ export default function CheckoutPage() {
     }));
   };
 
-  // Order items matching the Figma screenshot ("Asgaard sofa x 1" @ Rs. 250,000.00)
-  const orderItems = [
-    {
-      id: 'asgaard-sofa',
-      name: 'Asgaard sofa',
-      price: 250000,
-      quantity: 1,
-    },
-  ];
+  // Connect directly to live cart with demo fallback if empty
+  const orderItems =
+    cart.length > 0
+      ? cart.map((item) => ({
+          id: item.product.id,
+          name: item.product.name,
+          price: item.product.price,
+          quantity: item.quantity,
+        }))
+      : [
+          {
+            id: 'asgaard-sofa',
+            name: 'Asgaard sofa',
+            price: 25000000,
+            quantity: 1,
+          },
+        ];
 
-  const subtotal = orderItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const subtotal = cart.length > 0 ? cartSubtotal : 25000000;
   const total = subtotal;
 
   return (

@@ -33,11 +33,10 @@ export const DEFAULT_CART_ITEMS: CartDrawerItem[] = [
 ];
 
 export function formatRsPrice(amount: number): string {
-  return `Rs. ${amount.toLocaleString('en-US', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
+  return `₦ ${amount.toLocaleString('en-US')}`;
 }
+
+export const formatNaira = formatRsPrice;
 
 /**
  * Subtle Lock/Bag icon matching Furniro Figma specifications
@@ -177,12 +176,12 @@ export default function ShoppingCartDrawer({
               aria-labelledby="shopping-cart-title"
             >
               {/* Top Section: Drawer Header + Items List */}
-              <div className="flex-1 overflow-y-auto px-7 pt-7 pb-4">
+              <div className="flex-1 overflow-y-auto px-5 sm:px-7 pt-5 sm:pt-7 pb-4">
                 {/* Drawer Header */}
-                <div className="flex items-center justify-between pb-6">
+                <div className="flex items-center justify-between pb-4 sm:pb-6">
                   <h2
                     id="shopping-cart-title"
-                    className="text-2xl font-bold tracking-tight text-black font-['Montserrat',sans-serif]"
+                    className="text-xl sm:text-2xl font-bold tracking-tight text-black font-['Poppins',sans-serif]"
                   >
                     Shopping Cart
                   </h2>
@@ -227,7 +226,11 @@ export default function ShoppingCartDrawer({
                         className="flex items-center gap-4 group justify-between"
                       >
                         {/* Left: Thumbnail Image Box (light beige background box #F9F1E7) */}
-                        <div className="relative w-[105px] h-[105px] bg-[#F9F1E7] rounded-[10px] overflow-hidden shrink-0 flex items-center justify-center">
+                        <Link
+                          href={`/product/${item.id.replace(/-\d+$/, '')}`}
+                          onClick={handleClose}
+                          className="relative w-[105px] h-[105px] bg-[#F9F1E7] rounded-[10px] overflow-hidden shrink-0 flex items-center justify-center cursor-pointer block"
+                        >
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -236,12 +239,18 @@ export default function ShoppingCartDrawer({
                             className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                             referrerPolicy="no-referrer"
                           />
-                        </div>
+                        </Link>
 
                         {/* Middle: Details (Title + Quantity x Price) */}
                         <div className="flex-1 min-w-0 pr-2">
                           <h3 className="text-base font-normal text-black truncate mb-1.5 font-['Montserrat',sans-serif]">
-                            {item.name}
+                            <Link
+                              href={`/product/${item.id.replace(/-\d+$/, '')}`}
+                              onClick={handleClose}
+                              className="hover:text-[#B88E2F] transition-colors"
+                            >
+                              {item.name}
+                            </Link>
                           </h3>
                           <div className="flex items-baseline gap-3 text-xs text-black">
                             <span className="font-light">{item.quantity}</span>

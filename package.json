@@ -1,6 +1,7 @@
 {
-  "name": "ai-studio-applet",
-  "version": "0.1.0",
+  "name": "furniro-ecommerce-template",
+  "version": "1.0.0",
+  "description": "Production-ready modern e-commerce furniture store template built with Next.js 15, React 19, TypeScript, and Tailwind CSS",
   "private": true,
   "scripts": {
     "dev": "next dev",

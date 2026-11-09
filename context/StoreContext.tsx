@@ -1,21 +1,16 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import {
+  Product,
+  INITIAL_PRODUCTS,
+  MORE_PRODUCTS,
+  ALL_PRODUCTS,
+  getProductById,
+} from '@/lib/products';
 
-export interface Product {
-  id: string;
-  name: string;
-  subtitle: string;
-  price: number;
-  originalPrice?: number;
-  image: string;
-  badge?: {
-    type: 'discount' | 'new';
-    text: string;
-  };
-  category: 'chair' | 'sofa' | 'lamp' | 'decor' | 'table' | 'bed';
-  rating?: number;
-}
+export type { Product };
+export { INITIAL_PRODUCTS, MORE_PRODUCTS, ALL_PRODUCTS, getProductById };
 
 export interface CartItem {
   product: Product;
@@ -30,6 +25,8 @@ interface StoreContextType {
   addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+  resetCart: () => void;
   cartCount: number;
   cartSubtotal: number;
   wishlist: string[];
@@ -40,137 +37,12 @@ interface StoreContextType {
   showToast: (msg: string) => void;
 }
 
-export const INITIAL_PRODUCTS: Product[] = [
-  {
-    id: 'syltherine',
-    name: 'Syltherine',
-    subtitle: 'Stylish cafe chair',
-    price: 2500000,
-    originalPrice: 3500000,
-    image: '/images/product_cafe_chair_1793965648211.jpg',
-    badge: { type: 'discount', text: '-30%' },
-    category: 'chair',
-    rating: 4.8,
-  },
-  {
-    id: 'leviosa',
-    name: 'Leviosa',
-    subtitle: 'Stylish cafe chair',
-    price: 2500000,
-    image: '/images/product_cafe_chair_1793965648211.jpg',
-    category: 'chair',
-    rating: 4.6,
-  },
-  {
-    id: 'lolito',
-    name: 'Lolito',
-    subtitle: 'Luxury big sofa',
-    price: 7000000,
-    originalPrice: 14000000,
-    image: '/images/product_luxury_sofa_1793965649590.jpg',
-    badge: { type: 'discount', text: '-50%' },
-    category: 'sofa',
-    rating: 4.9,
-  },
-  {
-    id: 'respira',
-    name: 'Respira',
-    subtitle: 'Outdoor bar table and stool',
-    price: 500000,
-    image: '/images/category_dining_table_1793965623267.jpg',
-    badge: { type: 'new', text: 'New' },
-    category: 'table',
-    rating: 4.7,
-  },
-  {
-    id: 'grifo',
-    name: 'Grifo',
-    subtitle: 'Night lamp',
-    price: 1500000,
-    image: '/images/product_night_lamp_1793965650106.jpg',
-    category: 'lamp',
-    rating: 4.5,
-  },
-  {
-    id: 'muggo',
-    name: 'Muggo',
-    subtitle: 'Small mug',
-    price: 150000,
-    image: '/images/category_living_room_1793965623014.jpg',
-    badge: { type: 'new', text: 'New' },
-    category: 'decor',
-    rating: 4.9,
-  },
-  {
-    id: 'pingky',
-    name: 'Pingky',
-    subtitle: 'Cute bed set',
-    price: 7000000,
-    originalPrice: 14000000,
-    image: '/images/category_bedroom_decor_1793965622990.jpg',
-    badge: { type: 'discount', text: '-50%' },
-    category: 'bed',
-    rating: 4.8,
-  },
-  {
-    id: 'potty',
-    name: 'Potty',
-    subtitle: 'Minimalist flower pot',
-    price: 500000,
-    image: '/images/product_leather_sofa_1793965649732.jpg',
-    badge: { type: 'new', text: 'New' },
-    category: 'sofa',
-    rating: 4.6,
-  },
-];
-
-export const MORE_PRODUCTS: Product[] = [
-  {
-    id: 'asgaard-sofa',
-    name: 'Asgaard sofa',
-    subtitle: 'Outdoor Scandinavian sofa',
-    price: 25000000,
-    image: '/images/product_luxury_sofa_1793965649590.jpg',
-    badge: { type: 'new', text: 'New' },
-    category: 'sofa',
-    rating: 5.0,
-  },
-  {
-    id: 'maya-dining',
-    name: 'Maya Dining set',
-    subtitle: 'Solid oak dining table',
-    price: 12500000,
-    originalPrice: 15000000,
-    image: '/images/category_dining_table_1793965623267.jpg',
-    badge: { type: 'discount', text: '-15%' },
-    category: 'table',
-    rating: 4.9,
-  },
-  {
-    id: 'nordic-lounge',
-    name: 'Nordic Lounge chair',
-    subtitle: 'Woven rattan accent chair',
-    price: 3200000,
-    image: '/images/hero_scandinavian_room_1793965621222.jpg',
-    category: 'chair',
-    rating: 4.7,
-  },
-  {
-    id: 'lumina-arc',
-    name: 'Lumina Arc lamp',
-    subtitle: 'Architectural floor light',
-    price: 2800000,
-    originalPrice: 3500000,
-    image: '/images/product_night_lamp_1793965650106.jpg',
-    badge: { type: 'discount', text: '-20%' },
-    category: 'lamp',
-    rating: 4.8,
-  },
-];
-
-export function formatRupiah(amount: number): string {
-  return `Rp ${amount.toLocaleString('id-ID')}`;
+export function formatNaira(amount: number): string {
+  return `₦ ${amount.toLocaleString('en-US')}`;
 }
+
+export const formatRupiah = formatNaira;
+export const formatRs = formatNaira;
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
@@ -237,6 +109,18 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  const resetCart = () => {
+    setCart([
+      { product: INITIAL_PRODUCTS[0], quantity: 1 },
+      { product: INITIAL_PRODUCTS[4], quantity: 1 },
+    ]);
+    showToast('Reset cart to demo items');
+  };
+
   const toggleWishlist = (productId: string) => {
     setWishlist((prev) => {
       const exists = prev.includes(productId);
@@ -269,6 +153,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
+        resetCart,
         cartCount,
         cartSubtotal,
         wishlist,

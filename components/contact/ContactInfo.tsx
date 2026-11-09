@@ -25,7 +25,7 @@ export default function ContactInfo() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-black font-['Montserrat',sans-serif] leading-tight">
+          <h3 className="text-2xl font-semibold text-black font-['Poppins',sans-serif] leading-tight">
             Address
           </h3>
           <p className="text-base font-normal text-black mt-1 leading-relaxed max-w-[220px]">
@@ -54,7 +54,7 @@ export default function ContactInfo() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-black font-['Montserrat',sans-serif] leading-tight">
+          <h3 className="text-2xl font-semibold text-black font-['Poppins',sans-serif] leading-tight">
             Phone
           </h3>
           <p className="text-base font-normal text-black mt-1 leading-relaxed">
@@ -85,7 +85,7 @@ export default function ContactInfo() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-black font-['Montserrat',sans-serif] leading-tight">
+          <h3 className="text-2xl font-semibold text-black font-['Poppins',sans-serif] leading-tight">
             Working Time
           </h3>
           <p className="text-base font-normal text-black mt-1 leading-relaxed">

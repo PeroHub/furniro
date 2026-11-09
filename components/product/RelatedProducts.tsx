@@ -2,13 +2,27 @@
 
 import React from 'react';
 import ProductCard from '@/components/home/ProductCard';
-import { useStore, INITIAL_PRODUCTS, Product } from '@/context/StoreContext';
+import { useStore, ALL_PRODUCTS, Product } from '@/context/StoreContext';
 
-export default function RelatedProducts() {
+interface RelatedProductsProps {
+  currentProductId?: string;
+  category?: string;
+}
+
+export default function RelatedProducts({ currentProductId, category }: RelatedProductsProps) {
   const { addToCart, toggleWishlist, isInWishlist, showToast } = useStore();
 
-  // 4 items: Syltherine, Leviosa, Lolito, Respira
-  const relatedList = INITIAL_PRODUCTS.slice(0, 4);
+  // Find products excluding the current one, prioritizing same category if available
+  const otherProducts = ALL_PRODUCTS.filter((p) => p.id !== currentProductId);
+  const sameCategory = category 
+    ? otherProducts.filter((p) => p.category?.toLowerCase() === category.toLowerCase())
+    : [];
+  
+  const relatedList = (
+    sameCategory.length >= 4 
+      ? sameCategory.slice(0, 4) 
+      : [...sameCategory, ...otherProducts.filter((p) => !sameCategory.includes(p))].slice(0, 4)
+  );
 
   const handleShare = (product: Product, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -39,7 +53,7 @@ export default function RelatedProducts() {
     <section className="border-t border-[#D9D9D9] py-14 sm:py-18 bg-white font-['Poppins',sans-serif]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Centered Title */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-black font-['Montserrat',sans-serif] mb-10 tracking-tight">
+        <h2 className="text-3xl sm:text-[36px] font-bold text-center text-[#3A3A3A] font-['Poppins',sans-serif] mb-10 tracking-tight">
           Related Products
         </h2>
 

@@ -42,7 +42,7 @@ export default function CategoryCard({
       </div>
 
       {/* Label: e.g. "Dining", "Living", "Bedroom" */}
-      <h3 className="mt-6 text-xl sm:text-2xl font-bold text-[#333333] group-hover:text-[#B88E2F] transition-colors font-['Montserrat',sans-serif] tracking-tight">
+      <h3 className="mt-6 text-xl sm:text-2xl font-semibold text-[#333333] group-hover:text-[#B88E2F] transition-colors font-['Poppins',sans-serif] tracking-tight">
         {name}
       </h3>
     </div>

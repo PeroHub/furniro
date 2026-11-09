@@ -46,7 +46,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
   return (
     <div className="w-full font-['Poppins',sans-serif]">
       {/* Form Heading */}
-      <h2 className="text-3xl sm:text-4xl font-bold text-black font-['Montserrat',sans-serif] mb-9">
+      <h2 className="text-3xl sm:text-4xl font-semibold text-black font-['Poppins',sans-serif] mb-9">
         Billing details
       </h2>
 
@@ -66,7 +66,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
               required
               value={formData.firstName}
               onChange={(e) => onChange('firstName', e.target.value)}
-              className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+              className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
               required
               value={formData.lastName}
               onChange={(e) => onChange('lastName', e.target.value)}
-              className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+              className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
             />
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             type="text"
             value={formData.companyName}
             onChange={(e) => onChange('companyName', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -144,7 +144,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             required
             value={formData.streetAddress}
             onChange={(e) => onChange('streetAddress', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -162,7 +162,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             required
             value={formData.city}
             onChange={(e) => onChange('city', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -205,7 +205,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             required
             value={formData.zipCode}
             onChange={(e) => onChange('zipCode', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -223,7 +223,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             required
             value={formData.phone}
             onChange={(e) => onChange('phone', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -241,7 +241,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             required
             value={formData.email}
             onChange={(e) => onChange('email', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
 
@@ -253,7 +253,7 @@ export default function BillingForm({ formData, onChange }: BillingFormProps) {
             placeholder="Additional information"
             value={formData.additionalInfo}
             onChange={(e) => onChange('additionalInfo', e.target.value)}
-            className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+            className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
           />
         </div>
       </div>

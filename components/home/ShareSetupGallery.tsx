@@ -99,14 +99,38 @@ export default function ShareSetupGallery() {
         <span className="block text-xs sm:text-sm font-semibold text-[#666666] tracking-wide mb-1 font-['Poppins',sans-serif]">
           Share your setup with
         </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#333333] font-['Montserrat',sans-serif]">
+        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#3A3A3A] font-['Poppins',sans-serif]">
           #FuniroFurniture
         </h2>
       </div>
 
       {/* Responsive Masonry / CSS Grid Gallery matching Figma tiles */}
       <div className="w-full max-w-[1780px] mx-auto px-2 sm:px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 items-center">
+        {/* Mobile Horizontal Swipeable Gallery (< md) */}
+        <div className="md:hidden flex gap-3.5 overflow-x-auto snap-x snap-mandatory pb-4 px-3">
+          {TILES.map((tile) => (
+            <div
+              key={tile.id}
+              onClick={() => showToast(`Photo shared by ${tile.handle}`)}
+              className="relative w-[260px] h-[320px] shrink-0 snap-center rounded-lg overflow-hidden bg-[#F4F5F7] group cursor-pointer shadow-md"
+            >
+              <Image
+                src={tile.image}
+                alt={tile.alt}
+                fill
+                sizes="260px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-3.5 text-white text-xs font-medium">
+                <span className="font-['Poppins',sans-serif]">{tile.handle}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop 5-Column Masonry Mosaic (>= md) */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 items-center">
           
           {/* Column 1 */}
           <div className="flex flex-col gap-3 sm:gap-4">
@@ -302,7 +326,7 @@ export default function ShareSetupGallery() {
             </div>
             <div>
               <h4 className="text-base font-bold text-[#333333]">Free Shipping</h4>
-              <p className="text-xs text-[#898989]">Order over 150 $</p>
+              <p className="text-xs text-[#898989]">Order over ₦ 150,000</p>
             </div>
           </div>
 
