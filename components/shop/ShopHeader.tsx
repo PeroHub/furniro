@@ -24,8 +24,8 @@ export default function ShopHeader() {
       </div>
 
       {/* Centered Content: Title + Breadcrumbs */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight text-black font-['Montserrat',sans-serif] mb-2">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 font-['Poppins',sans-serif]">
+        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight text-black mb-2">
           Shop
         </h1>
 
@@ -33,12 +33,12 @@ export default function ShopHeader() {
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm sm:text-base">
           <Link
             href="/"
-            className="font-medium text-black hover:text-[#B88E2F] transition-colors font-['Montserrat',sans-serif]"
+            className="font-medium text-black hover:text-[#B88E2F] transition-colors"
           >
             Home
           </Link>
           <ChevronRight className="w-4 h-4 text-black stroke-[2.5]" />
-          <span className="font-light text-black font-['Montserrat',sans-serif]">
+          <span className="font-light text-black">
             Shop
           </span>
         </nav>

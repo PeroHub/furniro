@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function FeatureBar() {
   return (
-    <section className="w-full bg-[#FAF3EA] py-16 sm:py-20 font-['Poppins',sans-serif]">
+    <section className="w-full bg-[#FAF3EA] py-16 lg:py-[100px] font-['Poppins',sans-serif]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 items-center">
           
@@ -18,10 +18,10 @@ export default function FeatureBar() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#242424] font-['Montserrat',sans-serif] leading-tight">
+              <h3 className="text-xl sm:text-[25px] font-semibold text-[#242424] font-['Poppins',sans-serif] leading-tight">
                 High Quality
               </h3>
-              <p className="text-sm font-medium text-[#898989]">
+              <p className="text-sm sm:text-base font-medium text-[#898989]">
                 crafted from top materials
               </p>
             </div>
@@ -37,10 +37,10 @@ export default function FeatureBar() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#242424] font-['Montserrat',sans-serif] leading-tight">
+              <h3 className="text-xl sm:text-[25px] font-semibold text-[#242424] font-['Poppins',sans-serif] leading-tight">
                 Warranty Protection
               </h3>
-              <p className="text-sm font-medium text-[#898989]">
+              <p className="text-sm sm:text-base font-medium text-[#898989]">
                 Over 2 years
               </p>
             </div>
@@ -58,11 +58,11 @@ export default function FeatureBar() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#242424] font-['Montserrat',sans-serif] leading-tight">
+              <h3 className="text-xl sm:text-[25px] font-semibold text-[#242424] font-['Poppins',sans-serif] leading-tight">
                 Free Shipping
               </h3>
-              <p className="text-sm font-medium text-[#898989]">
-                Order over 150 $
+              <p className="text-sm sm:text-base font-medium text-[#898989]">
+                Order over ₦ 150,000
               </p>
             </div>
           </div>
@@ -79,10 +79,10 @@ export default function FeatureBar() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#242424] font-['Montserrat',sans-serif] leading-tight">
+              <h3 className="text-xl sm:text-[25px] font-semibold text-[#242424] font-['Poppins',sans-serif] leading-tight">
                 24 / 7 Support
               </h3>
-              <p className="text-sm font-medium text-[#898989]">
+              <p className="text-sm sm:text-base font-medium text-[#898989]">
                 Dedicated support
               </p>
             </div>

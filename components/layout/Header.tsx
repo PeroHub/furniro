@@ -41,16 +41,16 @@ export default function Header({ currentPath = '/' }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 sm:h-24 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 sm:h-20 lg:h-24 flex items-center justify-between">
         
         {/* Brand Zone: Logo + Name */}
         <Link 
           href="/" 
-          className="flex items-center gap-2.5 group shrink-0"
+          className="flex items-center gap-2 group shrink-0"
           aria-label="Furniro Home"
         >
           {/* Stylized Furniro Gold Triangle Emblem */}
-          <div className="w-9 h-8 relative flex items-center justify-center">
+          <div className="w-8 h-7 sm:w-9 sm:h-8 relative flex items-center justify-center">
             <svg
               viewBox="0 0 36 32"
               fill="none"
@@ -75,39 +75,33 @@ export default function Header({ currentPath = '/' }: HeaderProps) {
               />
             </svg>
           </div>
-          <span className="text-2xl sm:text-[28px] font-bold tracking-tight text-[#000000] font-['Montserrat',sans-serif]">
+          <span className="text-xl sm:text-2xl lg:text-[28px] font-bold tracking-tight text-[#000000] font-['Montserrat',sans-serif]">
             Furniro
           </span>
         </Link>
 
         {/* Navigation Zone */}
-        <nav className="hidden md:flex items-center gap-10 lg:gap-14">
+        <nav className="hidden md:flex items-center gap-10 lg:gap-14 font-['Poppins',sans-serif]">
           {navLinks.map((link) => {
             const isActive = currentPath === link.href;
-            const className = `text-[15px] font-medium transition-colors hover:text-[#B88E2F] relative py-1 ${
-              isActive ? 'text-[#000000] font-semibold' : 'text-[#000000]'
+            const className = `text-base font-medium transition-colors hover:text-[#B88E2F] py-1 ${
+              isActive ? 'text-[#B88E2F] font-semibold' : 'text-[#000000]'
             }`;
 
             return link.href.startsWith('/') ? (
               <Link key={link.label} href={link.href} className={className}>
                 {link.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#B88E2F] rounded-full" />
-                )}
               </Link>
             ) : (
               <a key={link.label} href={link.href} className={className}>
                 {link.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#B88E2F] rounded-full" />
-                )}
               </a>
             );
           })}
         </nav>
 
         {/* Action Icons Zone */}
-        <div className="flex items-center gap-4 sm:gap-7 shrink-0 text-[#000000]">
+        <div className="flex items-center gap-2.5 sm:gap-6 lg:gap-7 shrink-0 text-[#000000]">
           {/* User Account / Profile */}
           <div className="relative">
             <button
@@ -246,17 +240,18 @@ export default function Header({ currentPath = '/' }: HeaderProps) {
 
       {/* Mobile Nav Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-neutral-100 bg-white px-6 py-5 shadow-lg">
-          <nav className="flex flex-col gap-4">
+        <div className="md:hidden border-t border-neutral-100 bg-white px-5 py-5 shadow-xl font-['Poppins',sans-serif]">
+          <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-base font-medium text-[#333333] hover:text-[#B88E2F] transition-colors py-1 border-b border-neutral-50"
+                className="text-base font-medium text-[#333333] hover:text-[#B88E2F] transition-colors py-2 border-b border-neutral-100 flex items-center justify-between"
               >
-                {link.label}
-              </a>
+                <span>{link.label}</span>
+                <span className="text-xs text-[#9F9F9F]">→</span>
+              </Link>
             ))}
             <div className="pt-2 flex items-center justify-between text-xs text-[#9F9F9F]">
               <span>Cart items: {cartCount}</span>
@@ -265,7 +260,7 @@ export default function Header({ currentPath = '/' }: HeaderProps) {
                   setIsMobileMenuOpen(false);
                   openCart();
                 }}
-                className="text-[#B88E2F] font-semibold underline"
+                className="text-[#B88E2F] font-semibold underline p-1 cursor-pointer"
               >
                 View Cart
               </button>

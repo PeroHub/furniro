@@ -37,7 +37,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
       </div>
 
       {/* 2. Meta Info Row below Image */}
-      <div className="flex items-center gap-6 sm:gap-9 text-sm sm:text-base text-[#9F9F9F] font-normal mt-4">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-9 text-xs sm:text-base text-[#9F9F9F] font-normal mt-4">
         {/* Author */}
         <div className="flex items-center gap-2">
           <User className="w-4 h-4 text-[#9F9F9F] stroke-[1.8]" />
@@ -58,7 +58,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
       </div>
 
       {/* 3. Post Title */}
-      <h2 className="text-2xl sm:text-3xl font-medium text-black font-['Montserrat',sans-serif] mt-4 mb-3 group-hover:text-[#B88E2F] transition-colors leading-tight">
+      <h2 className="text-2xl sm:text-3xl font-medium text-black font-['Poppins',sans-serif] mt-4 mb-3 group-hover:text-[#B88E2F] transition-colors leading-tight">
         {post.title}
       </h2>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import CartHeader from '@/components/cart/CartHeader';
 import CartTable, { CartTableItem } from '@/components/cart/CartTable';
@@ -8,44 +8,39 @@ import CartTotals from '@/components/cart/CartTotals';
 import FeatureBar from '@/components/shop/FeatureBar';
 import { useStore } from '@/context/StoreContext';
 
-const INITIAL_CART_ITEMS: CartTableItem[] = [
-  {
-    id: 'asgaard-sofa',
-    name: 'Asgaard sofa',
-    price: 250000,
-    quantity: 1,
-    image: '/images/asgaard_sofa_thumb.jpg',
-  },
-];
-
 export default function CartPage() {
-  const { showToast } = useStore();
-  const [cartItems, setCartItems] = useState<CartTableItem[]>(INITIAL_CART_ITEMS);
+  const {
+    cart,
+    removeFromCart,
+    updateQuantity,
+    resetCart,
+    cartSubtotal,
+    cartCount,
+    showToast,
+  } = useStore();
 
-  // Update quantity handler
+  const cartTableItems: CartTableItem[] = cart.map(({ product, quantity }) => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    quantity,
+    image: product.image,
+  }));
+
   const handleUpdateQuantity = (id: string, quantity: number) => {
-    if (quantity < 1) return;
-    setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+    updateQuantity(id, quantity);
   };
 
-  // Remove item handler
   const handleRemoveItem = (id: string, name: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    removeFromCart(id);
     showToast(`Removed "${name}" from cart`);
   };
 
-  // Restore defaults handler
   const handleRestoreDefaults = () => {
-    setCartItems(INITIAL_CART_ITEMS);
+    resetCart();
   };
 
-  // Calculations
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const subtotal = cartSubtotal;
   const total = subtotal; // Free delivery as noted in trust bar
 
   return (
@@ -60,7 +55,7 @@ export default function CartPage() {
             {/* Left Column: Cart Table */}
             <div className="lg:col-span-8">
               <CartTable
-                items={cartItems}
+                items={cartTableItems}
                 onUpdateQuantity={handleUpdateQuantity}
                 onRemoveItem={handleRemoveItem}
                 onRestoreDefaults={handleRestoreDefaults}
@@ -72,7 +67,7 @@ export default function CartPage() {
               <CartTotals
                 subtotal={subtotal}
                 total={total}
-                itemsCount={cartItems.reduce((acc, i) => acc + i.quantity, 0)}
+                itemsCount={cartCount}
               />
             </div>
           </div>

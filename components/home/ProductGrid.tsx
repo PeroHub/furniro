@@ -7,7 +7,7 @@ import {
   Product, 
   INITIAL_PRODUCTS, 
   MORE_PRODUCTS,
-  formatRupiah
+  formatNaira
 } from '@/context/StoreContext';
 
 interface ProductGridProps {
@@ -70,10 +70,10 @@ export default function ProductGrid({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Centered Section Title */}
         <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-[40px] font-bold tracking-tight text-[#333333] font-['Montserrat',sans-serif] mb-3">
+          <h2 className="text-3xl sm:text-[40px] font-bold tracking-tight text-[#3A3A3A] font-['Poppins',sans-serif] mb-3">
             Our Products
           </h2>
-          <p className="text-sm sm:text-base text-[#666666]">
+          <p className="text-sm sm:text-base text-[#666666] font-['Poppins',sans-serif]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
 

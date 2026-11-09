@@ -19,16 +19,30 @@ export default function ProductGallery({
   ],
   productName = 'Asgaard sofa',
 }: ProductGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState<string>(mainImage);
+  const [userSelectedImage, setUserSelectedImage] = useState<string | null>(null);
+  const [prevMainImage, setPrevMainImage] = useState<string>(mainImage);
+
+  if (prevMainImage !== mainImage) {
+    setPrevMainImage(mainImage);
+    setUserSelectedImage(null);
+  }
+
+  const selectedImage = userSelectedImage || mainImage;
+
+  // Ensure there are at least 4 thumbnails for visual balance
+  const displayImages = images && images.length > 0 ? images : [mainImage];
+  const thumbnailList = displayImages.length >= 4 
+    ? displayImages.slice(0, 4) 
+    : [...displayImages, ...Array(4 - displayImages.length).fill(mainImage)];
 
   return (
     <div className="flex flex-col-reverse sm:flex-row gap-6 w-full">
       {/* Thumbnail Stack on the Far Left: 4 stacked thumbnail preview cards */}
       <div className="flex sm:flex-col gap-4 overflow-x-auto sm:overflow-visible shrink-0">
-        {images.map((img, idx) => (
+        {thumbnailList.map((img, idx) => (
           <button
             key={idx}
-            onClick={() => setSelectedImage(img)}
+            onClick={() => setUserSelectedImage(img)}
             className={`w-16 h-16 sm:w-20 sm:h-20 bg-[#F9F1E7] rounded-lg overflow-hidden relative cursor-pointer transition-all duration-200 border ${
               selectedImage === img
                 ? 'border-[#B88E2F] ring-1 ring-[#B88E2F]'

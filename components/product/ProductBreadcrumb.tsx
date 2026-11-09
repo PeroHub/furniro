@@ -31,8 +31,8 @@ export default function ProductBreadcrumb({
         <ChevronRight className="w-4 h-4 text-black stroke-[2.5]" />
         {/* Vertical divider line */}
         <span className="h-7 w-[2px] bg-[#9F9F9F] mx-1" aria-hidden="true" />
-        {/* Current Product in bold black */}
-        <span className="font-medium text-black font-['Montserrat',sans-serif] tracking-tight">
+        {/* Current Product in black */}
+        <span className="font-normal text-black font-['Poppins',sans-serif] tracking-tight">
           {productName}
         </span>
       </div>

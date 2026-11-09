@@ -26,7 +26,7 @@ export const CATALOG_COMPARISON_OPTIONS: ComparisonProductInfo[] = [
   {
     id: 'outdoor-sofa-set',
     name: 'Outdoor Sofa Set',
-    price: 'Rs. 224,000.00',
+    price: '₦ 224,000.00',
     rawPrice: 224000,
     rating: 4.2,
     reviewsCount: 145,
@@ -35,7 +35,7 @@ export const CATALOG_COMPARISON_OPTIONS: ComparisonProductInfo[] = [
   {
     id: 'casaliving-wood',
     name: 'Casaliving Wood',
-    price: 'Rs. 270,000.00',
+    price: '₦ 270,000.00',
     rawPrice: 270000,
     rating: 4.6,
     reviewsCount: 182,
@@ -44,7 +44,7 @@ export const CATALOG_COMPARISON_OPTIONS: ComparisonProductInfo[] = [
   {
     id: 'lolito',
     name: 'Lolito Luxury Sofa',
-    price: 'Rs. 290,000.00',
+    price: '₦ 290,000.00',
     rawPrice: 290000,
     rating: 4.9,
     reviewsCount: 310,
@@ -53,7 +53,7 @@ export const CATALOG_COMPARISON_OPTIONS: ComparisonProductInfo[] = [
   {
     id: 'syltherine',
     name: 'Syltherine Lounge',
-    price: 'Rs. 185,000.00',
+    price: '₦ 185,000.00',
     rawPrice: 185000,
     rating: 4.5,
     reviewsCount: 98,
@@ -110,18 +110,18 @@ export default function ComparisonTopCards({
   };
 
   return (
-    <div className="w-full font-['Poppins',sans-serif]">
+    <div className="w-full font-['Poppins',sans-serif] overflow-x-auto">
       {/* 4 Column Top Grid with Hairline Dividers */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-b border-[#E8E8E8]">
+      <div className="min-w-[760px] lg:min-w-full grid grid-cols-4 border-b border-[#E8E8E8]">
         {/* Column 1: Callout & View More */}
-        <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#E8E8E8]">
+        <div className="p-4 sm:p-8 lg:p-10 flex flex-col justify-between border-r border-[#E8E8E8]">
           <div>
-            <h2 className="text-2xl lg:text-[28px] font-medium text-black leading-tight font-['Montserrat',sans-serif] max-w-[240px]">
+            <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold text-black leading-tight font-['Poppins',sans-serif] max-w-[240px]">
               Go to Product page for more Products
             </h2>
             <Link
               href="/shop"
-              className="inline-block mt-4 text-base font-medium text-[#727272] border-b border-[#727272] pb-0.5 hover:text-[#B88E2F] hover:border-[#B88E2F] transition-colors"
+              className="inline-block mt-4 text-sm sm:text-base font-medium text-[#727272] border-b border-[#727272] pb-0.5 hover:text-[#B88E2F] hover:border-[#B88E2F] transition-colors"
             >
               View More
             </Link>
@@ -129,9 +129,9 @@ export default function ComparisonTopCards({
         </div>
 
         {/* Column 2: Product 1 (Asgaard Sofa) */}
-        <div className="p-6 sm:p-8 lg:p-10 border-b md:border-b-0 lg:border-r border-[#E8E8E8] flex flex-col">
+        <div className="p-4 sm:p-8 lg:p-10 border-r border-[#E8E8E8] flex flex-col">
           {/* Beige Image Container */}
-          <div className="relative w-full h-[180px] bg-[#F9F1E7] rounded-[10px] overflow-hidden p-3 flex items-center justify-center">
+          <div className="relative w-full h-[150px] sm:h-[180px] bg-[#F9F1E7] rounded-[10px] overflow-hidden p-3 flex items-center justify-center">
             <Image
               src={product1.image}
               alt={product1.name}
@@ -142,10 +142,10 @@ export default function ComparisonTopCards({
             />
           </div>
 
-          <h3 className="text-xl font-medium text-black mt-3.5 font-['Montserrat',sans-serif]">
+          <h3 className="text-lg sm:text-xl font-medium text-black mt-3.5 font-['Poppins',sans-serif]">
             {product1.name}
           </h3>
-          <p className="text-base lg:text-lg font-medium text-black mt-1 font-['Montserrat',sans-serif]">
+          <p className="text-sm sm:text-base lg:text-lg font-medium text-black mt-1 font-['Poppins',sans-serif]">
             {product1.price}
           </p>
 
@@ -153,9 +153,9 @@ export default function ComparisonTopCards({
         </div>
 
         {/* Column 3: Product 2 (Outdoor Sofa Set) */}
-        <div className="p-6 sm:p-8 lg:p-10 border-b md:border-b-0 lg:border-r border-[#E8E8E8] flex flex-col">
+        <div className="p-4 sm:p-8 lg:p-10 border-r border-[#E8E8E8] flex flex-col">
           {/* Beige Image Container */}
-          <div className="relative w-full h-[180px] bg-[#F9F1E7] rounded-[10px] overflow-hidden p-3 flex items-center justify-center">
+          <div className="relative w-full h-[150px] sm:h-[180px] bg-[#F9F1E7] rounded-[10px] overflow-hidden p-3 flex items-center justify-center">
             <Image
               src={product2.image}
               alt={product2.name}
@@ -166,10 +166,10 @@ export default function ComparisonTopCards({
             />
           </div>
 
-          <h3 className="text-xl font-medium text-black mt-3.5 font-['Montserrat',sans-serif]">
+          <h3 className="text-lg sm:text-xl font-medium text-black mt-3.5 font-['Poppins',sans-serif]">
             {product2.name}
           </h3>
-          <p className="text-base lg:text-lg font-medium text-black mt-1 font-['Montserrat',sans-serif]">
+          <p className="text-sm sm:text-base lg:text-lg font-medium text-black mt-1 font-['Poppins',sans-serif]">
             {product2.price}
           </p>
 
@@ -177,8 +177,8 @@ export default function ComparisonTopCards({
         </div>
 
         {/* Column 4: Add A Product Dropdown */}
-        <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-start relative">
-          <h2 className="text-2xl font-semibold text-black mb-3 font-['Montserrat',sans-serif]">
+        <div className="p-4 sm:p-8 lg:p-10 flex flex-col justify-start relative">
+          <h2 className="text-xl sm:text-2xl font-semibold text-black mb-3 font-['Poppins',sans-serif]">
             Add A Product
           </h2>
 

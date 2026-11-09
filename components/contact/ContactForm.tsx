@@ -76,7 +76,7 @@ export default function ContactForm() {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+              className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
             />
           </div>
 
@@ -97,7 +97,7 @@ export default function ContactForm() {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+              className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
             />
           </div>
 
@@ -117,7 +117,7 @@ export default function ContactForm() {
               onChange={(e) =>
                 setFormData({ ...formData, subject: e.target.value })
               }
-              className="w-full h-[65px] sm:h-[75px] rounded-[10px] border border-[#9F9F9F] px-6 text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
+              className="w-full h-[52px] sm:h-[65px] rounded-[10px] border border-[#9F9F9F] px-4 sm:px-6 text-sm sm:text-base text-black bg-white placeholder:text-[#9F9F9F] focus:outline-hidden focus:border-[#B88E2F] focus:ring-1 focus:ring-[#B88E2F] transition-all"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-[237px] h-[55px] bg-[#B88E2F] hover:bg-[#9e7a27] text-white font-normal text-base rounded-[5px] transition-colors cursor-pointer shadow-xs active:scale-98 flex items-center justify-center gap-2 disabled:opacity-60"
+              className="w-full sm:w-[237px] h-[50px] sm:h-[55px] bg-[#B88E2F] hover:bg-[#9e7a27] text-white font-normal text-base rounded-[5px] transition-colors cursor-pointer shadow-xs active:scale-98 flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {isSubmitting ? (
                 <span>Sending...</span>

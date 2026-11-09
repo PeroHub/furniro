@@ -38,10 +38,10 @@ export default function CartTotals({ subtotal, total, itemsCount }: CartTotalsPr
 
   return (
     <>
-      <div className="w-full bg-[#F9F1E7] px-6 sm:px-12 lg:px-16 py-12 lg:py-16 flex flex-col justify-between font-['Poppins',sans-serif]">
+      <div className="w-full bg-[#F9F1E7] rounded-xl sm:rounded-none px-5 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-between font-['Poppins',sans-serif]">
         <div>
           {/* Centered Heading */}
-          <h2 className="text-2xl sm:text-[32px] font-bold text-black font-['Montserrat',sans-serif] text-center mb-10 sm:mb-12">
+          <h2 className="text-xl sm:text-[32px] font-semibold text-black font-['Poppins',sans-serif] text-center mb-6 sm:mb-10">
             Cart Totals
           </h2>
 
@@ -60,7 +60,7 @@ export default function CartTotals({ subtotal, total, itemsCount }: CartTotalsPr
             <span className="text-base font-medium text-black">
               Total
             </span>
-            <span className="text-xl sm:text-2xl font-semibold text-[#B88E2F] tabular-nums font-['Montserrat',sans-serif]">
+            <span className="text-xl sm:text-2xl font-semibold text-[#B88E2F] tabular-nums font-['Poppins',sans-serif]">
               {formatRs(total)}
             </span>
           </div>
